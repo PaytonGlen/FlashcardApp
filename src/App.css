@@ -84,3 +84,52 @@ body {
 #add-button:active {
   background-color: #004080;
 }
+
+.quiz {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.flashcard {
+  font-size: 24px;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.quiz input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+#quiz-start {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.quiz button:hover {
+  background-color: #0056b3;
+}
+
+.feedback {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.dropzone {
+  width: 200px;
+  height: 200px;
+  border: 2px dashed #ccc;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
