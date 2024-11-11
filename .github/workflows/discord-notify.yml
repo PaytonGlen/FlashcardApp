@@ -13,5 +13,5 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d "{\"username\": \"GitHub Bot\", \"avatar_url\": \"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\", \"content\": \"**New Commit on Main Branch**\n**Message:** '${{ github.event.head_commit.message }}'\n**Author:** '${{ github.event.head_commit.author.name }}'\n**URL:** '${{ github.event.head_commit.url }}'\"}" \
+          -d "{\"username\": \"GitHub Bot\", \"avatar_url\": \"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\", \"content\": \"**New Commit on Main Branch**\n**Message:** '${{ github.event.head_commit.message }}'\n**Author:** '${{ github.event.head_commit.author.name }}'\"}" \
           $DISCORD_WEBHOOK
