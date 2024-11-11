@@ -4,6 +4,12 @@ import FlashcardList from "./FlashcardList";
 import Quiz from "./Quiz"; // Import the Quiz component
 import "./App.css";
 
+//adding some comments
+//testing out discord webhook
+const d = new Date();
+const time = d.getDate();
+//can delete this next time you open this
+
 function App() {
   const [flashcards, setFlashcards] = useState([]);
   const [quizMode, setQuizMode] = useState(false); // State to toggle quiz mode
