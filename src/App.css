@@ -1,38 +1,86 @@
 .App {
   text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #5a9ee6;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  color: #007bff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+
+.flashcard-form {
+  margin: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.flashcard-list {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flashcard {
+  width: 200px;
+  height: 150px;
+  margin: 10px;
+  padding: 20px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 18px;
+  transition: transform 0.2s;
+}
+
+.flashcard:hover {
+  transform: scale(1.05);
+}
+
+.flashcard-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#term-input,
+#definition-input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 10px 5px 10px 0;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#term-input:focus,
+#definition-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+#add-button {
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  background-color: #007bff;
   color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+#add-button:hover {
+  background-color: #0056b3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#add-button:active {
+  background-color: #004080;
 }

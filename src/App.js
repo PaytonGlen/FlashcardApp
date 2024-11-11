@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import FlashcardForm from './FlashcardForm';
+import FlashcardList from './FlashcardList';
 import './App.css';
 
 function App() {
+  const [flashcards, setFlashcards] = useState([]);
+
+  // Function to add a new flashcard
+  const addFlashcard = (term, definition) => {
+    setFlashcards([...flashcards, { term, definition }]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 style={{color: "white"}}>Flashcard App</h1>
+      <FlashcardForm addFlashcard={addFlashcard} />
+      <FlashcardList flashcards={flashcards} />
     </div>
   );
 }
