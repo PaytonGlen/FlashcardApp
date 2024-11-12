@@ -8,8 +8,6 @@ body {
   color: #007bff;
 }
 
-
-
 .flashcard-form {
   margin: 20px;
 }
@@ -132,4 +130,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.loading-message {
+  color: #007bff;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.error-message {
+  color: #ff4d4f;
+  font-size: 0.9em;
+  text-align: center;
 }

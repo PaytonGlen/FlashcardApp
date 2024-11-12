@@ -1,21 +1,26 @@
 import React, { useState } from "react";
-import FlashcardForm from "./FlashcardForm";
-import FlashcardList from "./FlashcardList";
-import Quiz from "./Quiz"; // Import the Quiz component
+import FlashcardForm from "./FlashcardForm.js";
+import FlashcardList from "./FlashcardList.js";
+import Quiz from "./Quiz.js"; // Import the Quiz component
 import "./App.css";
-
-//adding some comments
-//testing out discord webhook
-const d = new Date();
-const time = d.getDate();
-//can delete this next time you open this
+import axios from "axios";
 
 function App() {
   const [flashcards, setFlashcards] = useState([]);
   const [quizMode, setQuizMode] = useState(false); // State to toggle quiz mode
 
-  const addFlashcard = (term, definition) => {
-    setFlashcards([...flashcards, { term, definition }]);
+  const addFlashcard = async (term, definitions) => {
+    const newFlashcard = { term, definitions };
+
+    // Optional: Save to backend
+    try {
+      await axios.post("http://localhost:3001/api/flashcards", newFlashcard);
+    } catch (error) {
+      console.error("Error saving flashcard:", error);
+    }
+
+    // Update state
+    setFlashcards([...flashcards, newFlashcard]);
   };
 
   const startQuiz = () => {

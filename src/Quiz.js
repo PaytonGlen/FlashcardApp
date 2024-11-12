@@ -1,33 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function Quiz({ flashcards, endQuiz }) {
   const [currentIndex, setCurrentIndex] = useState(0); // Index of the current flashcard
-  const [userInput, setUserInput] = useState(''); // User's input for the definition
+  const [userInput, setUserInput] = useState(""); // User's input for the definition
   const [correctCount, setCorrectCount] = useState(0); // Count of correct answers
-  const [feedback, setFeedback] = useState(''); // Feedback for the user
+  const [feedback, setFeedback] = useState(""); // Feedback for the user
 
   const currentCard = flashcards[currentIndex];
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Check if the user's answer matches the definition (case-insensitive)
-    if (userInput.trim().toLowerCase() === currentCard.definition.toLowerCase()) {
+
+    // Validate that the user has entered something reasonable
+    if (!userInput.trim()) {
+      setFeedback("Please enter an answer.");
+      return;
+    }
+
+    // Ensure that currentCard.definition exists to prevent runtime errors
+    if (
+      currentCard.definition &&
+      userInput.trim().toLowerCase() === currentCard.definition.toLowerCase()
+    ) {
       setCorrectCount(correctCount + 1);
-      setFeedback('Correct!');
+      setFeedback("Correct!");
     } else {
-      setFeedback(`Incorrect! The correct answer was: ${currentCard.definition}`);
+      setFeedback(
+        `Incorrect! The correct answer was: ${currentCard.definition || "N/A"}`
+      );
     }
 
     // Clear user input for the next flashcard
-    setUserInput('');
+    setUserInput("");
 
     // Move to the next flashcard after a short delay
     setTimeout(() => {
       if (currentIndex < flashcards.length - 1) {
         setCurrentIndex(currentIndex + 1);
-        setFeedback('');
+        setFeedback("");
       } else {
-        setFeedback(`All done! You got ${correctCount + 1}/${flashcards.length} correct.`);
+        setFeedback(
+          `All done! You got ${correctCount} out of ${flashcards.length} correct.`
+        );
       }
     }, 1000);
   };
@@ -56,9 +70,11 @@ function Quiz({ flashcards, endQuiz }) {
         </>
       ) : (
         <>
-          <h2>All done!</h2>
+          <h2 style={{ color: "white" }}>All done!</h2>
           <p>{`You got ${correctCount} / ${flashcards.length} correct.`}</p>
-          <p>{`Score: ${((correctCount / flashcards.length) * 100).toFixed(2)}%`}</p>
+          <p>{`Score: ${((correctCount / flashcards.length) * 100).toFixed(
+            2
+          )}%`}</p>
           <button onClick={endQuiz}>End Quiz</button>
         </>
       )}
