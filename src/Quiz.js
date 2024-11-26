@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import "./App.css";
 
 function Quiz({ flashcards, endQuiz }) {
   const [currentIndex, setCurrentIndex] = useState(0); // Index of the current flashcard
   const [userInput, setUserInput] = useState(""); // User's input for the definition
   const [correctCount, setCorrectCount] = useState(0); // Count of correct answers
   const [feedback, setFeedback] = useState(""); // Feedback for the user
+  const [incorrectAnswers, setIncorrectAnswers] = useState([]);
 
   const currentCard = flashcards[currentIndex];
 
@@ -25,6 +27,7 @@ function Quiz({ flashcards, endQuiz }) {
       setCorrectCount(correctCount + 1);
       setFeedback("Correct!");
     } else {
+      setIncorrectAnswers((prev) => [...prev, currentCard.term]);
       setFeedback(
         `Incorrect! The correct answer was: ${currentCard.definition || "N/A"}`
       );
@@ -43,7 +46,7 @@ function Quiz({ flashcards, endQuiz }) {
           `All done! You got ${correctCount} out of ${flashcards.length} correct.`
         );
       }
-    }, 1000);
+    }, 6000);
   };
 
   return (
@@ -70,7 +73,7 @@ function Quiz({ flashcards, endQuiz }) {
         </>
       ) : (
         <>
-          <h2 style={{ color: "white" }}>All done!</h2>
+          <h2>All done!</h2>
           <p>{`You got ${correctCount} / ${flashcards.length} correct.`}</p>
           <p>{`Score: ${((correctCount / flashcards.length) * 100).toFixed(
             2

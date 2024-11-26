@@ -1,5 +1,5 @@
 import React from "react";
-import Flashcard from "./Flashcard";
+import Flashcard from "./Flashcard.js";
 
 function FlashcardList({ flashcards }) {
   return (
